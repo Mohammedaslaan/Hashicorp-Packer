@@ -18,7 +18,7 @@
         state: present
 
     - name: Unzip the downloaded file
-      command: unzip -j "/tmp/2136_kool_form_pack.zip" -d "/var/www/html/"
+      command: unzip -j "/tmp/2136_kool_form_pack.zip" -d "/var/www/html/home/"
       args:
         creates: "/var/www/html/home/"
 
