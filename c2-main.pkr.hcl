@@ -6,18 +6,9 @@ packer {
     }
   }
 }
-function convert_to_numbers_only(date_string) {
-  # Extract numbers from the date string using a regular expression
-  numbers_only = regexall("[0-9]", date_string)
-
-  # Concatenate the numbers to form a single string
-  result = join("", numbers_only)
-
-  return result
-}
 source "amazon-ebs" "ubuntu" {
   region        = var.ami-creation-region
-  ami_name = "${var.ami_target_name}-${convert_to_numbers_only(local.timestamp)}"
+  ami_name = "${var.ami_target_name}-${local.my_variable}"
   instance_type = var.instance_type
   source_ami_filter {
     filters = {

@@ -4,7 +4,7 @@ data "aws_ami" "new-created-ami" {
 
   filter {
     name   = "name"
-    values = ["packer-*"]
+    values = ["packer*"]
   }
 
   filter {
