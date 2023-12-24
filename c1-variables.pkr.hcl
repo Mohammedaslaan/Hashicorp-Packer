@@ -31,5 +31,5 @@ variable "instance_type" {
 }
 
 locals {
-  timestamp = regex_replace(timestamp(), "[- TZ:]", "")
+  timestamp = timestamp()
 }
