@@ -9,7 +9,7 @@ resource "aws_key_pair" "kp" {
 
  provisioner "local-exec" {
   command = <<EOT
-    [ -e mykey.pem ] && rm -f mykey.pem && echo "${tls_private_key.pk.private_key_pem}" > myKey.pem && chmod 400 myKey.pem
+    [ -e mykey.pem ] && sudo rm -f mykey.pem && echo "${tls_private_key.pk.private_key_pem}" > myKey.pem && chmod 400 myKey.pem
   EOT
 }
 
