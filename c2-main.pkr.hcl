@@ -8,7 +8,7 @@ packer {
 }
 source "amazon-ebs" "ubuntu" {
   region        = var.ami-creation-region
-  ami_name = replace("${var.ami_target_name}-${local.timestamp}", "/[^a-zA-Z0-9._-]/", "")
+  ami_name = "ami-${replace(clean_resource_name("${var.ami_target_name}-${local.timestamp}"), "_", "-")}"
   instance_type = var.instance_type
   source_ami_filter {
     filters = {
