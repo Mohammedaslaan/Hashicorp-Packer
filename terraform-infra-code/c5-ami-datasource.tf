@@ -4,7 +4,7 @@ data "aws_ami" "new-created-ami" {
 
   filter {
     name   = "name"
-    values = ["packer_ubuntu_tomcat9"]
+    values = ["packer_ubuntu_tomcat9*"]
   }
 
   filter {

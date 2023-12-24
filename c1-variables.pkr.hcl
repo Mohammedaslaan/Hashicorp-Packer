@@ -1,7 +1,7 @@
 variable "ami_target_name" {
   description = "Name of AMI that will be created."
   type        = string
-  default     = "packer_ubuntu_tomcat9"
+  default     = "packer_ubuntu_tomcat9-${timestamp()}"
 }
 variable "ami_source_name" {
   description = "Name of source"
