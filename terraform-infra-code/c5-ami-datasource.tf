@@ -16,4 +16,5 @@ data "aws_ami" "new-created-ami" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
+  
 }
