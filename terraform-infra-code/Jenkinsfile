@@ -1,0 +1,30 @@
+pipeline {
+
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    }
+
+   agent  any
+    stages {
+        stage('Fetch Terraform Files') {
+            steps {
+                // Clone the Terraform files from Git
+                git branch: 'main', url: 'https://github.com/Mohammedaslaan/Hashicorp-Packer.git'
+            }
+        }
+        stage('change directory') {
+            steps {
+                script {
+                    dir('/var/lib/jenkins/workspace/Packer-ami-deploy/terraform-infra-code') {
+                        // Additional steps go here
+                        sh 'terraform init -lock=false'
+                        sh 'terraform plan'
+                        sh 'terraform apply -auto-approve'
+                    }
+                }
+            }
+        }
+    }
+
+  }
