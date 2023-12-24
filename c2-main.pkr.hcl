@@ -12,7 +12,7 @@ source "amazon-ebs" "ubuntu" {
   instance_type = var.instance_type
   source_ami_filter {
     filters = {
-      name                = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230919"
+      name                = "amazon/al2023-ami-2023.*-kernel-6.1-x86_64"
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
