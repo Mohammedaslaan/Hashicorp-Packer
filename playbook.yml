@@ -19,7 +19,8 @@
 
     - name: Unzip the downloaded file
       command: unzip -j "/tmp/2136_kool_form_pack.zip" -d "/var/www/html/"
-
+      args:
+        creates: "/var/www/html/home/"
 
     - name: Enable Apache on system reboot
       service: name=httpd enabled=yes
