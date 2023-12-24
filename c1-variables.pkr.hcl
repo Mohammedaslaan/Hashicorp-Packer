@@ -32,4 +32,6 @@ variable "instance_type" {
 
 locals {
   timestamp = timestamp()
+  clean_timestamp = clean_resource_name(local.timestamp)
+  my_variable = "${build_name}-${local.clean_timestamp}"
 }
