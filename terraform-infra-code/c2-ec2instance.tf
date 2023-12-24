@@ -11,4 +11,5 @@ resource "aws_instance" "myec2vm" {
     aws_security_group.terraform2-SG-ssh.id,
     aws_security_group.terraform2-SG-web.id
   ]
+  
 }
