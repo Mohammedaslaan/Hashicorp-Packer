@@ -1,7 +1,7 @@
 variable "ami_target_name" {
   description = "Name of AMI that will be created."
   type        = string
-  default     = "packer_ubuntu_tomcat9"
+  default     = "packer-"
 }
 variable "ami_source_name" {
   description = "Name of source"
@@ -28,4 +28,8 @@ variable "instance_type" {
   description = "The type of instance which will be used to create ami"
   type        = string
   default     = "t2.micro"
+}
+
+locals {
+  timestamp = regex_replace(timestamp(), "[- TZ:]", "")
 }

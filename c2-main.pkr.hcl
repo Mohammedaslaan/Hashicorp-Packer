@@ -8,7 +8,7 @@ packer {
 }
 source "amazon-ebs" "ubuntu" {
   region        = var.ami-creation-region
-  ami_name      = var.ami_target_name
+  ami_name      = "${var.ami_target_name}-${local.timestamp}"
   instance_type = var.instance_type
   source_ami_filter {
     filters = {
