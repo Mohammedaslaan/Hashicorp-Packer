@@ -8,7 +8,7 @@ packer {
 }
 source "amazon-ebs" "ubuntu" {
   region        = var.ami-creation-region
-  ami_name      = local.ami_name_with_timestamp
+  ami_name      = var.ami_target_name
   instance_type = var.instance_type
   source_ami_filter {
     filters = {
@@ -25,6 +25,7 @@ source "amazon-ebs" "ubuntu" {
 
 build {
   sources = ["source.amazon-ebs.ubuntu"]
+
     provisioner "ansible" {
       playbook_file = "./playbook.yml"
     }

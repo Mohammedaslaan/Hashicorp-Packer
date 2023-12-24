@@ -1,13 +1,8 @@
-locals {
-  timestamp = regex_replace(timestamp(), "[^a-zA-Z0-9-]", "")
-}
-
 variable "ami_target_name" {
   description = "Name of AMI that will be created."
   type        = string
-  default     = "${var.ami_target_name}-${local.timestamp}"
+  default     = "packer_ubuntu_tomcat9"
 }
-
 variable "ami_source_name" {
   description = "Name of source"
   type        = string
