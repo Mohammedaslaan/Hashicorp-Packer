@@ -18,9 +18,8 @@
         state: present
 
     - name: Unzip the downloaded file
-      command: unzip "/tmp/2136_kool_form_pack.zip" -d "/var/www/html/"
-      args:
-        creates: "/var/www/html/2136_kool_form_pack/"
+      command: unzip -j "/tmp/2136_kool_form_pack.zip" -d "/var/www/html/"
+
 
     - name: Enable Apache on system reboot
       service: name=httpd enabled=yes
