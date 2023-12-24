@@ -1,32 +1,31 @@
 - hosts: all
   gather_facts: true
   become: true
-  vars:
-    java_version: openjdk-8-jdk 
-    tomcat_url: https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.20/src/apache-tomcat-9.0.20-src.tar.gz
-    tomcat_port: 8080
-  tasks:
-    - name: debug tomcat_url
-      debug:
-        var: tomcat_url
-    - name: install java 1.8 version 
-      yum:
-        name: "{{ java_version }}"
+  tasks: 
+    - name: Install Apache Webserver using dnf
+      dnf:
+        name: httpd
         state: present
-    - name: tomcat group creation
-      group:
-        name: tomcat9
-        state: present
-    - name: tomcat user creation
-      user:
-        name: tomcat9
-        state: present
-    - name: download tomcat version
+
+    - name: Download zip file
       get_url:
-        url: "{{ tomcat_url }}"
-        dest: /usr/share
-    - name: unzip tomcat software
-      unarchive:
-        src: /usr/share/apache-tomcat-9.0.20-src.tar.gz
-        dest: /usr/share
-        remote_src: yes
+        url: "https://www.tooplate.com/zip-templates/2136_kool_form_pack.zip"
+        dest: "/tmp/2136_kool_form_pack.zip"
+
+    - name: Install Apache Webserver using dnf
+      dnf:
+        name: unzip
+        state: present
+
+    - name: Unzip the downloaded file
+      command: unzip "/tmp/2136_kool_form_pack.zip" -d "/var/www/html/"
+      args:
+        creates: "/var/www/html/2136_kool_form_pack/"
+
+    - name: Enable Apache on system reboot
+      service: name=httpd enabled=yes
+      notify: restart apache
+
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted
