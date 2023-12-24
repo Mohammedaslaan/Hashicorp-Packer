@@ -12,7 +12,7 @@ source "amazon-ebs" "ubuntu" {
   instance_type = var.instance_type
   source_ami_filter {
     filters = {
-      name                = "amazon/al2023-ami-2023.*-kernel-6.1-x86_64"
+      name                = "al2023-ami-2023.3.20231218.0-kernel-6.1-x86_64"
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
