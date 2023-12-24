@@ -15,7 +15,7 @@ variable "ami_source_owner" {
 }
 variable "ssh_username" {
   description = "Name that will be used to do ssh."
-  default     = "ubuntu"
+  default     = "ec2-user"
 }
 
 variable "ami-creation-region" {
