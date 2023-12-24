@@ -25,12 +25,6 @@ source "amazon-ebs" "ubuntu" {
 
 build {
   sources = ["source.amazon-ebs.ubuntu"]
-  provisioner "shell" {
-    inline = [
-      "sudo apt-get -y update",
-      "sudo apt-get -y install ansible"
-    ]
-  }
     provisioner "ansible" {
       playbook_file = "./playbook.yml"
     }
